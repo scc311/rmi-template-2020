@@ -6,6 +6,8 @@ In here is just the calculator example that can be found on Moodle.
 
 > Tested on Docker for Mac and Linux
 
+---
+
 ## Requires
 
   - Docker Engine
@@ -29,3 +31,35 @@ In here is just the calculator example that can be found on Moodle.
      3. Use `Ctrl-C` to get out of the container's tty.
 
 > ⚠️ The container images will contain your coursework! **DO NOT** push the built images to a public container registry!
+
+---
+
+## How [without docker-compose]
+
+> 🚨 Life is easier with compose, so you don't really *need* this...
+
+ - Much like in the steps above, make sure you code is divided up and in the correct directories. These steps just replace step 8. 
+ - All command below should be run from the root directory. 
+ - If you can, use `tmux` or different terminal windows for the client and server.
+
+### Build & Run the Server
+
+  1. From the root directory (with the README in), run the following to build the container image (and your server code):
+       ```bash
+       docker build --rm -f server-code/Dockerfile -t rmi-server .
+       ```
+  2. Next, to run your server (and simultaneously start the registry), run:
+       ```bash
+       docker run --rm -it --network host --privileged rmi-server
+       ```
+
+### Build & Run the Client
+
+  1. From the root directory (with the README in), run the following to build the container image (and your client code):
+       ```bash
+       docker build --rm -f client-code/Dockerfile -t rmi-client .
+       ```
+  2. Next, to run your client, run:
+       ```bash
+       docker run --rm -it --network host --privileged rmi-client
+       ```
