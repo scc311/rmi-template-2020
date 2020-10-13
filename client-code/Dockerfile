@@ -4,8 +4,8 @@ FROM openjdk:${JAVA_VERSION}
 WORKDIR /app
 COPY client-code/ .
 COPY interface-code/ .
+RUN chmod +x entrypoint.sh
 
 RUN javac *.java
 
-# change me to [ "java", "<file name with main in it (without .java)>" ]
-ENTRYPOINT [ "java", "calculatorclient" ]
+ENTRYPOINT [ "sh", "entrypoint.sh" ]
