@@ -19,7 +19,7 @@ In here is just the calculator example that can be found on Moodle.
   1. Clone me from this git repo: `git clone https://github.com/scc311/rmi-docker-template rmi-cw`
   2. Change to the cloned root directory: `cd rmi-cw` (this should put you in the same directory as this README)
   3. Make sure your client code is in the `client-code` directory.
-  4. Update the `client-code/Dockerfile`'s entrypoint to the file with the name of the file with your `main` in it.
+  4. Update the `client-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
      - (without the .java extension)
   5. Make sure your server code is in the `server-code` directory.
   6. Update the `server-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
