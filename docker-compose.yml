@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+
+  server:
+    container_name: rmi-server
+    build:
+      context: .
+      dockerfile: ./server-code/Dockerfile
+      args:
+        JAVA_VERSION: "8-slim"
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+
+  client:
+    container_name: rmi-client
+    build:
+      context: .
+      dockerfile: ./client-code/Dockerfile
+      args:
+        JAVA_VERSION: "8-slim"
+    depends_on:
+      - server
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+    stdin_open: true
+    tty: true
