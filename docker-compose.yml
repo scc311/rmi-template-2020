@@ -10,8 +10,7 @@ services:
       args:
         JAVA_VERSION: "8-slim"
     network_mode: "host"
-    cap_add:
-      - NET_ADMIN
+    privileged: true
 
   client:
     container_name: rmi-client
@@ -23,7 +22,6 @@ services:
     depends_on:
       - server
     network_mode: "host"
-    cap_add:
-      - NET_ADMIN
+    privileged: true
     stdin_open: true
     tty: true
