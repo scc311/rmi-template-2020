@@ -7,4 +7,5 @@ COPY interface-code/ .
 
 RUN javac *.java
 
+# change me to [ "java", "<file name with main in it (without .java)>" ]
 ENTRYPOINT [ "java", "calculatorclient" ]
