@@ -2,6 +2,7 @@
 
 echo "Running JAVA RMI Registry..."
 rmiregistry &
+sleep 1
 
 echo "Running Your Server..."
 
