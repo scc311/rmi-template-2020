@@ -9,6 +9,8 @@ services:
       dockerfile: ./server-code/Dockerfile
       args:
         JAVA_VERSION: "8-slim"
+    volumes:
+      - ./shared:/shared
     network_mode: "host"
     privileged: true
 
@@ -21,6 +23,8 @@ services:
         JAVA_VERSION: "8-slim"
     depends_on:
       - server
+    volumes:
+      - ./shared:/shared
     network_mode: "host"
     privileged: true
     stdin_open: true
