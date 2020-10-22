@@ -18,7 +18,7 @@ In here is just the calculator example that can be found on Moodle.
 
 ## How
 
-  1. Clone me from this git repo: `git clone https://github.com/scc311/rmi-docker-template rmi-cw`
+  1. Clone me from this git repo: `git clone https://github.com/scc311/rmi-docker-template -b cw1 rmi-cw`
   2. Change to the cloned root directory: `cd rmi-cw` (this should put you in the same directory as this README)
   3. Make sure your client code is in the `client-code` directory.
   4. Update the `client-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
