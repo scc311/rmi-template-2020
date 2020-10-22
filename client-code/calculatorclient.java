@@ -20,7 +20,7 @@ public class calculatorclient {
 
 	    // Create the reference to the remote object through the remiregistry			
             calculator c = (calculator)
-                           Naming.lookup("rmi://localhost/CalculatorService");
+                           Naming.lookup("rmi://"+DockerUtility.getRegistryHost()+"/CalculatorService");
             
 	    // Now use the reference c to call remote methods
 	    System.out.println("3+21="+ c.add(3, 21) );		
