@@ -11,8 +11,10 @@ services:
         JAVA_VERSION: "8-slim"
     volumes:
       - ./shared:/shared
-    network_mode: "host"
-    privileged: true
+    networks:
+      - default
+    ports:
+      - 1099:1099
 
   client:
     container_name: rmi-client
@@ -25,7 +27,13 @@ services:
       - server
     volumes:
       - ./shared:/shared
-    network_mode: "host"
-    privileged: true
+    networks:
+      - default
+    environment:
+      - REGISTRY_HOST=rmi-server
     stdin_open: true
     tty: true
+
+networks:
+  default:
+    driver: bridge
