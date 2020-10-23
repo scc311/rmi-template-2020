@@ -6,7 +6,7 @@ This repo is a good template if you want to run your RMI work using Docker. This
 
 In here is just the calculator example that can be found on Moodle.
 
-> Tested on Docker for Mac and Linux
+> Tested on Docker for Mac and Linux and Windows 10
 
 ---
 
