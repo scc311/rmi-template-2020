@@ -23,11 +23,12 @@ In here is just the calculator example that can be found on Moodle.
   3. Make sure your client code is in the `client-code` directory.
   4. Update the `client-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
      - (without the .java extension)
-  5. Make sure your server code is in the `server-code` directory.
-  6. Update the `server-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
+  5. Any reference to `localhost` in your client (specifically your rmi lookup), needs to be replaced with `DockerUtility.getRegistryHost()`.
+  6. Make sure your server code is in the `server-code` directory.
+  7. Update the `server-code/entrypoint.sh`'s java command to the file with the name of the file with your `main` in it.
      - (without the .java extension)
-  7. Make sure your interface code is in the `interface-code` directory.
-  8. From the root directory of those 3 folders (the one with this README in)
+  8. Make sure your interface code is in the `interface-code` directory.
+  9.  From the root directory of those 3 folders (the one with this README in)
      1. To build your code (or re-build after you make changes), run: `docker-compose build`
      2. To run the registry, server, and client, run: `docker-compose up`
      3. Use `Ctrl-C` to get out of the container's tty.
@@ -40,7 +41,7 @@ In here is just the calculator example that can be found on Moodle.
 
 > 🚨 Life is easier with compose, so you don't really *need* this...
 
- - Much like in the steps above, make sure you code is divided up and in the correct directories. These steps just replace step 8. 
+ - Much like in the steps above, make sure you code is divided up and in the correct directories. These steps just replace step 9. 
  - All command below should be run from the root directory. 
  - If you can, use `tmux` or different terminal windows for the client and server.
 
