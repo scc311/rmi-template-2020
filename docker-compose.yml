@@ -2,38 +2,72 @@ version: "3.7"
 
 services:
 
+  ## Your replica server (just 1 instance)
   server:
-    container_name: rmi-server
+    container_name: server
+    image: rmicw-server
     build:
       context: .
       dockerfile: ./server-code/Dockerfile
       args:
         JAVA_VERSION: "8-slim"
+    depends_on:
+      - redis
     volumes:
       - ./shared:/shared
     networks:
-      - default
+      - rmicw
+    environment:
+      - REDIS_HOST=redis
+      - PORT=8080
+
+  ## A simple key/value store that can be accessed in java via Jedis
+  redis:
+    container_name: redis
+    image: redis:alpine
+    networks:
+      - rmicw
+
+  ## Your front facing RMI server
+  middleware-server:
+    container_name: middleware-server
+    image: rmicw-middleware
+    build:
+      context: .
+      dockerfile: ./middleware-code/Dockerfile
+      args:
+        JAVA_VERSION: "8-slim"
+    depends_on:
+      - redis
+    volumes:
+      - ./shared:/shared
+    networks:
+      - rmicw
+    environment:
+      - REDIS_HOST=redis
     ports:
       - 1099:1099
 
+  ## Your RMI client (just 1 instance)
   client:
     container_name: rmi-client
+    image: rmicw-client
     build:
       context: .
       dockerfile: ./client-code/Dockerfile
       args:
         JAVA_VERSION: "8-slim"
     depends_on:
-      - server
+      - middleware-server
     volumes:
       - ./shared:/shared
     networks:
-      - default
+      - rmicw
     environment:
-      - REGISTRY_HOST=rmi-server
+      - REGISTRY_HOST=middleware-server
     stdin_open: true
     tty: true
 
 networks:
-  default:
-    driver: bridge
+  rmicw:
+    external: true
