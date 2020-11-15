@@ -1,6 +1,6 @@
 # Docker Template for RMI Courseworks 🐳
 
-> `Coursework 1` Branch (check the branch list for available templates)
+> `Coursework 1` Branch | For Courseworks 1 and 2 | (check the branch list for available templates)
 
 This repo is a good template if you want to run your RMI work using Docker. This would mean that you do not need to install Java on computer to build/run your code and the RMI registry.
 
